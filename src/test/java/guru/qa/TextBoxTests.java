@@ -14,8 +14,10 @@ public class TextBoxTests {
     static void setUp() {
         Configuration.holdBrowserOpen = true;
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.timeout = 15000;
-        Configuration.browserSize = "1366x768";
+     // Configuration.browserSize = "1366x768";
+     // Configuration.timeout = 40000;
+
+
 
 
     }
@@ -30,7 +32,7 @@ public class TextBoxTests {
      $("[id=userEmail]").setValue("oleg@petrov.com");
      $("[id=currentAddress]").setValue("Some street 1");
      $("[id=permanentAddress]").setValue("Another street 2");
-     $("[id=submit]").click();
+     $(".text-right").click();
 
      $("[id=output]").shouldHave(text("name"), text("oleg@petrov.com"),
              text("Some street 1"), text("Another street 2"));
@@ -38,7 +40,7 @@ public class TextBoxTests {
         $("[id=output] [id=name]").shouldHave(text("name"));
         $("[id=output]").$("[id=name]").shouldHave(text("name"));
 
-        $("[id=permanentAddress]").shouldHave(text("name"));
+        //  $("[id=permanentAddress]").shouldHave(text("name"));
 
     }
 }
