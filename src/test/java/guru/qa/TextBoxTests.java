@@ -16,12 +16,7 @@ public class TextBoxTests {
         Configuration.baseUrl = "https://demoqa.com";
      // Configuration.browserSize = "1366x768";
      // Configuration.timeout = 40000;
-
-
-
-
     }
-
     @Test
     void fillFormTests() {
      open("/text-box");
