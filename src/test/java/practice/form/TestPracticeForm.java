@@ -7,9 +7,10 @@ public class TestPracticeForm {
     RegistrationFormPage registrationFormPage = new RegistrationFormPage();
     @BeforeAll
     static void setUp() {
-        Configuration.holdBrowserOpen = true;
+       // Configuration.holdBrowserOpen = true;
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "768x1200";
+       // Configuration.browserSize = "768x1200";
+        Configuration.pageLoadStrategy = "eager";
     }
     @Test
     void fillFormTests() {
