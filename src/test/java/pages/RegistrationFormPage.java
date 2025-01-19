@@ -1,19 +1,26 @@
 package pages;
-import com.codeborne.selenide.Condition;
+
 import com.codeborne.selenide.SelenideElement;
+import com.github.javafaker.Faker;
+
 import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+
 public class RegistrationFormPage {
+
     private final SelenideElement
             setFirstName = $("#firstName"),
             lastNameInput = $("#lastName"),
             emailInput = $("#userEmail"),
             numberInput = $("#userNumber"),
+            clickValue = $("#dateOfBirthInput"),
+            clickYear = $(".react-datepicker__year-select > [value = '1988']"),
+            clickMonth = $(".react-datepicker__month-select > [value = '5']"),
+            clickNumber = $(".react-datepicker__month .react-datepicker__day--021"),
             clickGender = $(byText("Male")),
             setSubjectInput = $("#subjectsInput"),
             getHobbies = $("[for='hobbies-checkbox-1']"),
@@ -26,7 +33,7 @@ public class RegistrationFormPage {
             clickSubmit = $("#submit"),
             checkText = $(".modal-header"),
             checkFieldStudentName = $(".modal-body"),
-            checkFieldStudentEmail =  $(".modal-body"),
+            checkFieldStudentEmail = $(".modal-body"),
             checkFieldGender = $(".modal-body"),
             checkFieldMobile = $(".modal-body"),
             checkDate = $(".modal-body"),
@@ -36,6 +43,10 @@ public class RegistrationFormPage {
             checkFieldAddress = $(".modal-body"),
             checkFieldStateAndCity = $(".modal-body"),
             checkButtonClose = $(".modal-footer");
+    private Faker faker;
+    public RegistrationFormPage(Faker faker) {
+        this.faker = faker;
+    }
 
 
     public RegistrationFormPage openPage() {
@@ -62,11 +73,12 @@ public class RegistrationFormPage {
         numberInput.setValue(value);
         return this;
     }
+
     public RegistrationFormPage setDate() {
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__year-select > [value = '1988']").click();
-        $(".react-datepicker__month-select > [value = '5']").click();
-        $(".react-datepicker__month .react-datepicker__day--021").click();
+        clickValue.click();
+        clickYear.click();
+        clickMonth.click();
+        clickNumber.click();
         return this;
     }
 
@@ -84,10 +96,12 @@ public class RegistrationFormPage {
         setSubjectInput.setValue(value).pressEnter();
         return this;
     }
+
     public RegistrationFormPage clickHobbies() {
         getHobbies.click();
         return this;
     }
+
     public RegistrationFormPage uploadFile(String value) {
         uploadPicture.uploadFile(new File(value));
         return this;
@@ -128,46 +142,56 @@ public class RegistrationFormPage {
         return this;
     }
 
-    public RegistrationFormPage checkFieldStudentName() {
-        checkFieldStudentName.shouldHave(text("Oleg Gordienko"));
+    public RegistrationFormPage checkFieldStudentName(String fullName) {
+        checkFieldStudentName.shouldHave(text(fullName));
         return this;
     }
-    public RegistrationFormPage checkFieldStudentEmail() {
+
+    public RegistrationFormPage checkFieldStudentEmail(String email) {
         checkFieldStudentEmail.shouldHave(text("agf@gmail.com"));
         return this;
     }
+
     public RegistrationFormPage checkFieldGender() {
         checkFieldGender.shouldHave(text("Male"));
         return this;
     }
-    public RegistrationFormPage checkFieldMobile() {
+
+    public RegistrationFormPage checkFieldMobile(String number) {
         checkFieldMobile.shouldHave(text("5696554564"));
         return this;
     }
-        public RegistrationFormPage checkDateOfBirth() {
+
+    public RegistrationFormPage checkDateOfBirth() {
         checkDate.shouldHave(text("21 June,1988"));
         return this;
     }
+
     public RegistrationFormPage checkFieldSubjects() {
         checkFieldSubjects.shouldHave(text("English, Computer Science"));
         return this;
     }
+
     public RegistrationFormPage checkFieldHobbies() {
         checkFieldHobbies.shouldHave(text("Sports"));
         return this;
     }
+
     public RegistrationFormPage checkFieldPicture() {
         checkFieldPicture.shouldHave(text("555.jpg"));
         return this;
     }
+
     public RegistrationFormPage checkFieldAddress() {
         checkFieldAddress.shouldHave(text("Донецкая"));
         return this;
     }
+
     public RegistrationFormPage checkFieldStateAndCity() {
         checkFieldStateAndCity.shouldHave(text("Uttar Pradesh Agra"));
         return this;
     }
+
     public RegistrationFormPage closeButtonClose() {
         checkButtonClose.click();
         return this;
