@@ -3,13 +3,15 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationFormPage;
+
+import static com.codeborne.selenide.Selenide.$;
+
 public class TestPracticeForm {
     RegistrationFormPage registrationFormPage = new RegistrationFormPage();
     @BeforeAll
     static void setUp() {
-        // Configuration.holdBrowserOpen = true;
-        // Configuration.baseUrl = "https://demoqa.com";
-        // Configuration.browserSize = "768x1200";
+         Configuration.baseUrl = "https://demoqa.com";
+         Configuration.pageLoadStrategy = "eager";
     }
     @Test
     void fillFormTests() {
@@ -18,10 +20,12 @@ public class TestPracticeForm {
                 .setLastName("Gordienko")
                 .setEmail("agf@gmail.com")
                 .setNumber("5696554564")
+                .setDate()
                 .clickRadioGender()
-                .setSubjectInput("English")
-                .setHobbies("Computer science")
-                .uploadFile("src/test/java/resources/lemur.jpg")
+                .setSubjectInputEnglish("English")
+                .setSubjectInputComputer("Computer science")
+                .clickHobbies()
+                .uploadFile("src/test/java/resources/555.jpg")
                 .setAddress("Донецкая")
                 .clickState()
                 .clickUttarPradesh()
@@ -33,11 +37,13 @@ public class TestPracticeForm {
                 .checkFieldStudentEmail()
                 .checkFieldGender()
                 .checkFieldMobile()
+                .checkDateOfBirth()
                 .checkFieldSubjects()
+                .checkFieldHobbies()
                 .checkFieldPicture()
                 .checkFieldAddress()
                 .checkFieldStateAndCity()
-                .checkButtonClose();
+                .closeButtonClose();
     }
 }
 
