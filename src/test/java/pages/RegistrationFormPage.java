@@ -7,8 +7,7 @@ import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationFormPage {
 
@@ -31,7 +30,7 @@ public class RegistrationFormPage {
             clickCity = $("#city"),
             clickAgra = $(byText("Agra")),
             clickSubmit = $("#submit"),
-            checkText = $(".modal-header"),
+            checkText = $(".modal-title"),
             checkFieldStudentName = $(".modal-body"),
             checkFieldStudentEmail = $(".modal-body"),
             checkFieldGender = $(".modal-body"),
@@ -148,7 +147,7 @@ public class RegistrationFormPage {
     }
 
     public RegistrationFormPage checkFieldStudentEmail(String email) {
-        checkFieldStudentEmail.shouldHave(text("agf@gmail.com"));
+        checkFieldStudentEmail.shouldHave(text(email));
         return this;
     }
 
@@ -158,7 +157,7 @@ public class RegistrationFormPage {
     }
 
     public RegistrationFormPage checkFieldMobile(String number) {
-        checkFieldMobile.shouldHave(text("5696554564"));
+        checkFieldMobile.shouldHave(text(number));
         return this;
     }
 
@@ -182,8 +181,8 @@ public class RegistrationFormPage {
         return this;
     }
 
-    public RegistrationFormPage checkFieldAddress() {
-        checkFieldAddress.shouldHave(text("Донецкая"));
+    public RegistrationFormPage checkFieldAddress(String address) {
+        checkFieldAddress.shouldHave(text(address));
         return this;
     }
 

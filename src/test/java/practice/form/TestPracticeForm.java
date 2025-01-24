@@ -26,9 +26,9 @@ public class TestPracticeForm {
     void fillFormTests() {
         String firstName = faker.name().firstName();
         String lastName = faker.name().lastName();
-        String email = "agf@gmail.com";
-        String number = "5696554564";
-        String address = "Донецкая";
+        String email = faker.internet().emailAddress();
+        String number = faker.number().digits(10);
+        String address = faker.address().fullAddress();
         String fullName = firstName + " " + lastName;
         registrationFormPage.openPage()
                 .setFirstName(firstName)
@@ -48,15 +48,15 @@ public class TestPracticeForm {
                 .clickAgra()
                 .clickSubmit()
                 .checkText()
-                .checkFieldStudentName(fullName) // Проверяем полное имя
-                .checkFieldStudentEmail(email) // Передаем email для проверки
+                .checkFieldStudentName(fullName)
+                .checkFieldStudentEmail(email)
                 .checkFieldGender()
-                .checkFieldMobile(number) // Передаем номер для проверки
+                .checkFieldMobile(number)
                 .checkDateOfBirth()
                 .checkFieldSubjects()
                 .checkFieldHobbies()
                 .checkFieldPicture()
-                .checkFieldAddress()
+                .checkFieldAddress(address)
                 .checkFieldStateAndCity()
                 .closeButtonClose();
     }
