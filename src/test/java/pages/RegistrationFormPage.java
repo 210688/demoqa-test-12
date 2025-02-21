@@ -43,6 +43,7 @@ public class RegistrationFormPage {
             checkFieldStateAndCity = $(".modal-body"),
             checkButtonClose = $(".modal-footer");
     private Faker faker;
+
     public RegistrationFormPage(Faker faker) {
         this.faker = faker;
     }

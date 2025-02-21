@@ -15,6 +15,7 @@ public class TestPracticeForm {
     static void setUp() {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
+        Configuration.browser = "firefox";
     }
 
     @BeforeEach
