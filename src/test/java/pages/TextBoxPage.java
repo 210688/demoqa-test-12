@@ -7,12 +7,12 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class TextBoxPage {
 
-    private SelenideElement userNameInput = $("#userName");
-    private SelenideElement userEmailInput = $("#userEmail");
-    private SelenideElement currentAddressInput = $("#currentAddress");
-    private SelenideElement permanentAddressInput = $("#permanentAddress");
-    private SelenideElement submitButton = $(".text-right");
-    private SelenideElement output = $("#output");
+    private final SelenideElement userNameInput = $("#userName");
+    private final SelenideElement userEmailInput = $("#userEmail");
+    private final SelenideElement currentAddressInput = $("#currentAddress");
+    private final SelenideElement permanentAddressInput = $("#permanentAddress");
+    private final SelenideElement submitButton = $(".text-right");
+    private final SelenideElement output = $("#output");
 
 
     public TextBoxPage fillForm(String name, String email, String currentAddress, String permanentAddress) {
