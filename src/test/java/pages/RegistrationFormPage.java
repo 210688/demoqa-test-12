@@ -6,6 +6,7 @@ import com.github.javafaker.Faker;
 import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -41,7 +42,8 @@ public class RegistrationFormPage {
             checkFieldPicture = $(".modal-body"),
             checkFieldAddress = $(".modal-body"),
             checkFieldStateAndCity = $(".modal-body"),
-            checkButtonClose = $(".modal-footer");
+            checkButtonClose = $(".modal-footer"),
+            resulModalWindow = $(".modal-content");
     private Faker faker;
 
     public RegistrationFormPage(Faker faker) {
@@ -195,5 +197,9 @@ public class RegistrationFormPage {
     public RegistrationFormPage closeButtonClose() {
         checkButtonClose.click();
         return this;
+    }
+
+    public void checkAbsenceFormResult() {
+        resulModalWindow.shouldNotBe(visible);
     }
 }
