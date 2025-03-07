@@ -1,6 +1,7 @@
 package practice.form;
 
 import com.github.javafaker.Faker;
+import guru.qa.TestDataGenerator;
 import guru.qa.TextSetup;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,27 +9,30 @@ import pages.RegistrationFormPage;
 
 public class TestPracticeForm extends TextSetup {
     RegistrationFormPage registrationFormPage;
-    Faker faker = new Faker();
+    TestDataGenerator testDataGenerator;
+
 
     @BeforeEach
     void init() {
-        registrationFormPage = new RegistrationFormPage(faker);
+        registrationFormPage = new RegistrationFormPage(new Faker());
+        testDataGenerator = new TestDataGenerator();
     }
 
     @Test
     void fillFormTests() {
-        String firstName = faker.name().firstName();
-        String lastName = faker.name().lastName();
-        String email = faker.internet().emailAddress();
-        String number = faker.number().digits(10);
-        String address = faker.address().fullAddress();
-        String fullName = firstName + " " + lastName;
+        String firstName = testDataGenerator.generateFirstName();
+        String lastName = testDataGenerator.generateLastName();
+        String email = testDataGenerator.generateEmail();
+        String number = testDataGenerator.generateNumber();
+        String address = testDataGenerator.generateAddress();
+        String fullName = testDataGenerator.generateFullName(firstName, lastName);
+        String dateOfBirth = testDataGenerator.generateRandomDateOfBirth();
         registrationFormPage.openPage()
                 .setFirstName(firstName)
                 .setLastName(lastName)
                 .setEmail(email)
                 .setNumber(number)
-                .setDate()
+                .setDate(dateOfBirth)
                 .clickRadioGender()
                 .setSubjectInputEnglish("English")
                 .setSubjectInputComputer("Computer science")
@@ -45,7 +49,7 @@ public class TestPracticeForm extends TextSetup {
                 .checkFieldStudentEmail(email)
                 .checkFieldGender()
                 .checkFieldMobile(number)
-                .checkDateOfBirth()
+                .checkDateOfBirth(dateOfBirth)
                 .checkFieldSubjects()
                 .checkFieldHobbies()
                 .checkFieldPicture()
@@ -56,10 +60,10 @@ public class TestPracticeForm extends TextSetup {
 
     @Test
     void RegistrationRequiredFieldsTest() {
-        String firstName = faker.name().firstName();
-        String lastName = faker.name().lastName();
-        String number = faker.number().digits(10);
-        String fullName = firstName + " " + lastName;
+        String firstName = testDataGenerator.generateFirstName();
+        String lastName = testDataGenerator.generateLastName();
+        String number = testDataGenerator.generateNumber();
+        String fullName = testDataGenerator.generateFullName(firstName, lastName);
         registrationFormPage
                 .openPage()
                 .setFirstName(firstName)
@@ -74,28 +78,15 @@ public class TestPracticeForm extends TextSetup {
 
     @Test
     void incorrectFillFormTest() {
-        String firstName = faker.name().firstName();
-        String lastName = faker.name().lastName();
+        String firstName = testDataGenerator.generateFirstName();
+        String lastName = testDataGenerator.generateLastName();
+        String dateOfBirth = testDataGenerator.generateRandomDateOfBirth();
         registrationFormPage.openPage()
                 .setFirstName(firstName)
                 .setLastName(lastName)
                 .clickRadioGender()
-                .setDate()
+                .setDate(dateOfBirth)
                 .clickSubmit()
                 .checkAbsenceFormResult();
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

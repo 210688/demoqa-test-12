@@ -11,7 +11,6 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationFormPage {
-
     private final SelenideElement
             setFirstName = $("#firstName"),
             lastNameInput = $("#lastName"),
@@ -76,7 +75,7 @@ public class RegistrationFormPage {
         return this;
     }
 
-    public RegistrationFormPage setDate() {
+    public RegistrationFormPage setDate(String dateOfBirth) {
         clickValue.click();
         clickYear.click();
         clickMonth.click();
@@ -135,7 +134,7 @@ public class RegistrationFormPage {
     }
 
     public RegistrationFormPage clickSubmit() {
-        clickSubmit.click();
+        clickSubmit.scrollTo().click();
         return this;
     }
 
@@ -164,7 +163,7 @@ public class RegistrationFormPage {
         return this;
     }
 
-    public RegistrationFormPage checkDateOfBirth() {
+    public RegistrationFormPage checkDateOfBirth(String dateOfBirth) {
         checkDate.shouldHave(text("21 June,1988"));
         return this;
     }
