@@ -13,7 +13,7 @@ import java.util.Map;
 public class TextSetup {
     @BeforeAll
     static void beforeAll() {
-        Configuration.browserSize = "800x700";
+        Configuration.browserSize = "1920x1020";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 10000;
