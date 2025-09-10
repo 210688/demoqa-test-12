@@ -99,7 +99,7 @@ public class RegistrationFormPage {
     }
 
     public RegistrationFormPage clickHobbies() {
-        getHobbies.click();
+        getHobbies.scrollTo().click();
         return this;
     }
 
