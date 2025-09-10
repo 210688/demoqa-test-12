@@ -7,7 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationFormPage;
-@Tag("property")
+@Tag("simple")
 public class TestPracticeForm extends TextSetup {
     RegistrationFormPage registrationFormPage;
     TestDataGenerator testDataGenerator;
