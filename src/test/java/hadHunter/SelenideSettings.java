@@ -10,7 +10,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
 
-public class HunterSettings{
+public class SelenideSettings{
 
     @BeforeAll
     static void beforeAll() {
