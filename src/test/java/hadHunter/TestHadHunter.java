@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 @Tag("simple")
-public class TestHadHunter {
+public class TestHadHunter extends HunterSettings{
 
     @Test
     void checkingTheWebsitesFunctionality() {
