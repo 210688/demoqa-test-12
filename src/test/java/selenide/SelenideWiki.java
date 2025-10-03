@@ -1,4 +1,4 @@
-package hadHunter;
+package selenide;
 
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
