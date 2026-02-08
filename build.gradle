@@ -32,9 +32,10 @@ dependencies {
 }
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)  // Используйте 17 вместо 21
+        languageVersion = JavaLanguageVersion.of(21)  // Измените с 17 на 21
     }
 }
+
 
 tasks.withType(Test) {
     useJUnitPlatform()
