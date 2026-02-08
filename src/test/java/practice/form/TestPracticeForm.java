@@ -12,6 +12,7 @@ public class TestPracticeForm extends TextSetup {
     RegistrationFormPage registrationFormPage;
     TestDataGenerator testDataGenerator;
 
+
     @BeforeEach
     void init() {
         registrationFormPage = new RegistrationFormPage(new Faker());

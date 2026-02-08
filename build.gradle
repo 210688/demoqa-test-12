@@ -30,12 +30,6 @@ dependencies {
             'org.slf4j:slf4j-simple:2.0.7'
     )
 }
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(21)  // Измените с 17 на 21
-    }
-}
-
 
 tasks.withType(Test) {
     useJUnitPlatform()
@@ -52,11 +46,11 @@ task simple_test(type: Test) {
     useJUnitPlatform {
         includeTags("simple")
     }
+}
 
-    task property_test(type: Test) {
-        useJUnitPlatform {
-            includeTags("property")
-        }
+task property_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("property")
     }
 }
 
