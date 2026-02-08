@@ -30,6 +30,11 @@ dependencies {
             'org.slf4j:slf4j-simple:2.0.7'
     )
 }
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
 
 tasks.withType(Test) {
     useJUnitPlatform()
